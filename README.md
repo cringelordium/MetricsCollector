@@ -165,3 +165,30 @@ BM_MetricUpdate           17.8 ns         17.8 ns     36867407
 - [ ] Нормальые тесты под тред санитайзером 
 - [ ] Оптимизация производительности
 - [ ] clang-format
+
+## Docker
+
+### Сборка образа
+```bash
+docker build -t metrics-collector .
+```
+
+### Запуск контейнера
+```bash
+docker run -v $(pwd)/metrics.log:/app/metrics.log metrics-collector
+```
+
+### Просмотр логов
+```bash
+docker logs metrics-collector
+```
+
+### Запуск тестов в контейнере
+```bash
+docker run metrics-collector ./run_tests
+```
+
+### Запуск бенчмарков в контейнере
+```bash
+docker run metrics-collector ./BenchmarkTest
+```

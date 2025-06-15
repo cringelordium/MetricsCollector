@@ -1,0 +1,10 @@
+.git
+.gitignore
+build/
+*.log
+.vscode/
+.idea/
+*.o
+*.so
+*.a
+*.out 
