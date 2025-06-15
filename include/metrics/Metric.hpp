@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class Metric { // фиксануть обнуление
+class Metric {
 public:
     virtual ~Metric() = default;
     virtual std::string metric_name() const = 0;

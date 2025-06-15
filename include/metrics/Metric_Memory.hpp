@@ -1,17 +1,20 @@
-#pragma once
-#include "IMetric.hpp"
+#include "Metric.hpp"
 #include <string>
 #include <atomic>
 
-class MemoryMetric : public IMetric {
-public:
-    MemoryMetric() = default;
-    ~MemoryMetric() override = default;
+// fetch_add для std::atomic<double> реализован только в C++20, при этом есть ограничения
+// здесь будет использоваться примитив синхронизации на атомиках
+// по итогу ВСЕ lock-free!
 
-    void update(double value) override;
+class MemoryUsageMetric : public Metric {
+public:
+    MemoryUsageMetric();
+
+    std::string metric_name() const override;
+    void update(double value);
     std::string get_and_reset() override;
-    double getCurrentValue() const;
 
 private:
-    std::atomic<double> current_value{0.0};
-}; 
+    std::atomic<double> total_;
+    std::atomic<int> count_;
+};

@@ -1,15 +1,16 @@
 #include "metrics/Metric_AdEngagement.hpp"
 
-void AdEngagementMetric::update(double value) {
-    current_value = value;
+std::string AdImpressionsMetric::metric_name() const {
+    return "ad_engagement";
 }
 
-std::string AdEngagementMetric::get_and_reset() {
-    std::string result = std::to_string(current_value);
-    current_value = 0.0;
-    return result;
+AdImpressionsMetric::AdImpressionsMetric() : total_(0) {}
+
+void AdImpressionsMetric::update(double value) {
+    total_.fetch_add(static_cast<int>(value), std::memory_order_relaxed);
 }
 
-double AdEngagementMetric::getCurrentValue() const {
-    return current_value;
-} 
+std::string AdImpressionsMetric::get_and_reset() {
+    int current = total_.exchange(0);
+    return std::to_string(current);
+}

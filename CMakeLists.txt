@@ -18,10 +18,8 @@ file(GLOB_RECURSE LIB_SOURCES
     "src/*.cpp"
 )
 
-# Create the library
 add_library(MetricsLib STATIC ${LIB_SOURCES})
 
-# Create the main executable
 add_executable(metrics_collector main.cpp)
 target_link_libraries(metrics_collector MetricsLib)
 
