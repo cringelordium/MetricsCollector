@@ -32,7 +32,7 @@ int main() {
         std::normal_distribution<> cpu_dist(70.0, 5.0);  // среднее 70%, отклонение 5%
         std::normal_distribution<> memory_dist(1500.0, 200.0);  // среднее 1.5GB, отклонение 200MB
         std::poisson_distribution<> ad_dist(100);  // среднее 100 показов в секунду
-        std::normal_distribution<> http_dist(150.0, 30.0);  // среднее 150 запросов, отклонение 30
+        std::normal_distribution<> http_dist(1500.0, 30.0);  // среднее 150 запросов, отклонение 30
 
         for (int i = 0; i < 10; ++i) {
             double cpu_value = std::max(0.0, std::min(100.0, cpu_dist(gen)));
