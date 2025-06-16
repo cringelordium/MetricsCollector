@@ -52,4 +52,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/metrics-catcher:latest 
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/metrics-collector:latest 
